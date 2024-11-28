@@ -8,7 +8,7 @@ import { HomeComponent } from './home/home.component';
 import { AddEmployeeComponent } from './add-employee/add-employee.component';
 import { EmployeeDataComponent } from './employee-data/employee-data.component';
 import { LoginComponent } from './login/login.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import{ HttpClientModule } from '@angular/common/http';
 
 
@@ -25,7 +25,8 @@ import{ HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule    
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -20,4 +20,16 @@ export class EmployeeService {
   getSearch(term:string):Observable<any>{
     return this.http.get("https://6572df5d192318b7db412dfe.mockapi.io/employees?filter="+term)
   }
+
+  getSort(column: string, order: string): Observable<any> {
+    return this.http.get(
+      `https://6572df5d192318b7db412dfe.mockapi.io/employees?sortBy=${column}&order=${order}`
+    );
+  }
+  getpaged(limit: number, page: number): Observable<any> {
+    return this.http.get("https://6572df5d192318b7db412dfe.mockapi.io/employees?limit=" + limit + "&page=" + page);
+  }
+  getAddEmployee(data:any):Observable<any>{
+    return this.http.post("https://6572df5d192318b7db412dfe.mockapi.io/employees", data)
+  }
 }

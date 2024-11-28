@@ -1,1 +1,77 @@
 <p>add-employee works!</p>
+<form [formGroup]="employeeForm">
+    <label for="">ID:</label>
+    <input type="number" formControlName="id"><br>
+
+    <label for="">Name:</label>
+    <input type="text" formControlName="name"><br>
+
+    <label for="">Gender:</label>
+    <input type="radio" formControlName="gender" id="ma" value="Male">
+    <label for="ma">Male</label>
+    <input type="radio" id="fe" formControlName="gender" value="Female">
+    <label for="fe">Female:</label><br>
+
+    <label for="">Company:</label>
+    <input type="text" formControlName="company"><br>
+
+    <label for="">Role:</label>
+    <input type="text" formControlName="role"><br>
+
+    <label for="">Package:</label>
+    <input type="number" formControlName="package"><br>
+
+    <label for="">Email:</label>
+    <input type="email" formControlName="email"><br>
+
+    <label for="">DOB:</label>
+    <input type="text"><br>
+
+    <div formGroupName="address">
+        <label for="">AddressLine:</label>
+        <input type="text" formControlName="addressLine"><br>
+
+        <label for="">City:</label>
+        <input type="text" formControlName="city"><br>
+
+        <label for="">State:</label>
+        <input type="text" formControlName="state"><br>
+
+        <label for="">Pincode:</label>
+        <input type="number" formControlName="pincode"><br>
+    </div>
+
+    <label for="">WorkMode:</label>
+    <input type="radio" id="rem" value="remote" name="workmode" formControlName="workmode">
+    <label for="rem">Remote</label>
+    <input type="radio" id="wfo" value="office" name="workmode" formControlName="workmode">
+    <label for="wfo">Work From Office</label><br>
+
+    <div *ngIf="employeeForm.get('workmode')?.value=='remote'">
+        <label for="">WiFi Bill:</label>
+    <input type="number" formControlName="wifibill"><br>
+    </div>
+
+    <div *ngIf="employeeForm.get('workmode')?.value=='office'">
+        <label for="">Travel Charges:</label>
+    <input type="number" formControlName="travelc"><br>
+    </div>
+
+    <label for="">Hike:</label>
+    <button class="btn btn-primary" (click)="addHike()">Add Hike</button>
+
+    <div formArrayName="hike">
+        <div *ngFor="let hike of hikesFormarray.controls;let i=index">
+            <div formGroupName="{{i}}">
+                <h2>hike {{i+1}}</h2>
+                <label for="">Year:</label>
+            <input type="number"><br>
+        
+            <label for="">Percentage</label>
+            <input type="number"><br>
+            </div>
+        </div>
+    </div>
+
+    <button class="btn btn-info" (click)="newemploye()">Sumbit</button>
+</form>
