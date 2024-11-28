@@ -1,0 +1,8 @@
+/* Define green and red background colors */
+.green-background {
+    background-color: green !important;
+}
+
+.red-background {
+    background-color: red !important;
+}
