@@ -1,0 +1,43 @@
+<p>employee-data works!</p>
+<label for="">Search:</label>
+<input type="text" [(ngModel)]="term" (keyup)="search()" placeholder="search">
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Company</th>
+            <th>Role</th>
+            <th>Package</th>
+            <th>DOb</th>
+            <th>Work Mode</th>
+            <th>Address</th>
+            <th>Hikes</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employee of employees">
+            <td>{{employee.id}}</td>
+            <td [ngClass]="employee.package > 900000 ? 'green-background' : 'red-background'">{{employee.name}}</td>
+            <td>{{employee.company}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.package}}</td>
+            <td>{{employee.dob}}</td>
+            <td>{{employee.workMode}}</td>
+            <td>
+                <div>{{employee.address?.addressLine}}</div>
+                <div>{{employee.address?.city}}, {{employee.address?.state}} - {{employee.address?.pincode}}</div>
+            </td>
+            <td>
+                <div *ngFor="let hike of employee.hikes">
+                    <div>Year: {{hike.year}}</div>
+                    <div>Percentage: {{hike.percentage}}%</div>
+                </div>
+            </td>
+            <td>
+                <button class="btn btn-danger" (click)="delete(employee.id)">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
