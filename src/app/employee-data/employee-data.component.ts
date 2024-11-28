@@ -11,6 +11,12 @@ export class EmployeeDataComponent {
   employees:any=[];
   term:string = "";
 
+  column:string="";
+  order:string="";
+
+  page:number= 0 ;
+  limit:number = 0 ;
+
 constructor(private employeeData:EmployeeService) { 
   employeeData.getEmployeeData().subscribe(
     (data:any)=>{
@@ -41,6 +47,28 @@ search(){
     (error:any)=>{
       alert("internal error")
     }
+  )
+
+}
+
+sort(){
+  this.employeeData.getSort(this.column, this.order).subscribe(
+    (data:any)=>{
+      this.employees=data;
+    },
+    (err:any)=>{
+      alert("internal error")
+    }
+  )
+}
+pagination(){
+  this.employeeData.getpaged(this.limit, this.page).subscribe(
+    (data:any)=>{
+      this.employees=data;
+    },
+    (err:any)=>{
+      alert("internal error")
+    }   
   )
 
 }
